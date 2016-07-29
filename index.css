@@ -40,7 +40,7 @@ input[type='checkbox']+ label+ p {
     transition: all 0.25s;
 }
 input[type='checkbox']:checked+label+ p {
-    max-height: 30vh;
+    max-height: 10vh;
 }
 a {
     color: unset;
@@ -49,13 +49,21 @@ a {
 contact-form.compact {
     width: 13em;
     height: 4em;
-    top: 35%;
+    top: 50%;
     padding: 0px;
     overflow: hidden;
     font-size: 0.8em;
     box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2);
     color: #4d4d5d;
     transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+}
+@keyframes bloop {
+    from {
+        transform:scale(0) translateY(-50%);
+    }
+    to {
+        transform:scale(1) translateY(-50%);
+    }
 }
 contact-form.compact.inactive {
     top: calc(100% - 3em);
@@ -77,21 +85,57 @@ contact-form, contact-form.override {
     display: block;
     z-index: +20;
     right: 3em;
-    top: 50%;
+    top: calc(50% + 30px);
     height: unset;
     overflow: visible;
     font-size: 1em;
+    will-change: height,width,top,border-radius;
     transform: translateY(-50%);
     width: 350px;
+    animation:bloop 0.5s 1;
     border: 1px solid #edd;
-    padding: 40px 20px;
-    padding-top: 60px;
+    padding: 20px 20px;
+    /* padding-top: 60px; */
     background-color: #f0f0f4;
     box-shadow: 0px 2px 5px 2px rgba(0, 0, 0, 0.2);
     transition: all 0.25s cubic-bezier(0, 0, 0, 1);
 }
 contact-form.override {
-    transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+    transition: all 0.25s cubic-bezier(0, 0, 0, 1);
+}
+contact-form> div#tandc {
+    z-index:+100;
+    position:absolute;
+    transition:all 0.5s;
+    padding: 0px 20px;
+    top:0;
+    height:0;
+    left:0;
+    right:0;
+    background:#f0f0f4;
+    box-sizing:border-box;
+    overflow:hidden;
+}
+contact-form> div#tandc.active{
+    padding: 20px;
+    height:100%;
+    border-bottom:1px solid rgba(0,0,0,0.2);
+}
+contact-form> div#tandc>div {
+    position:relative;
+    width:100%;
+    text-align:justify;
+    border: 1px solid #dddeee;
+    box-sizing:border-box;
+    background:#eeefff;
+    padding:20px;
+    color:#445;
+    font-size:0.9em;
+    overflow:hidden;
+    max-height:80%;
+}
+contact-form> div#tandc.active>div {
+    overflow:auto;
 }
 contact-form> face, contact-form.override> face {
     z-index: +15;
@@ -142,11 +186,12 @@ contact-form.compact:active {
     color: #3d3d4d;
     box-shadow: 0px 5px 7px 2px rgba(0, 0, 0, 0.2);
 }
-contact-form> input, contact-form> button {
+contact-form> input, contact-form> .button, contact-form>textarea {
     height: 60px;
     position: relative;
     display: block;
     z-index: +10;
+    font-family: Raleway;
     margin: 20px auto;
     width: 70%;
     border: none;
@@ -157,23 +202,13 @@ contact-form> input, contact-form> button {
     font-size: 1em;
     border-bottom: 2px solid #aaa;
 }
-contact-form> input {
+contact-form> input, contact-form> textarea {
+    resize: none;
     height: 40px;
     margin-top: 40px;
     overflow: auto;
     font-size: 0.9em;
-}
-contact-form>#agreement {
-    color: #3c3c5d;
-}
-contact-form>#agreement>input#tandcField {
-    -webkit-appearance: none;
-    appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    border: none;
-    display: none;
+    padding: 0px 5px;
 }
 contact-form> label {
     display: inline-block;
@@ -185,94 +220,64 @@ contact-form> label {
     color: #1d1d2d;
     transition: all 0.3s !important;
 }
-contact-form>#agreement>input#tandcField+ label {
-    line-height: 20px;
-    margin: 10px 0px 10px 15%;
-    cursor: pointer;
-    position: relative;
-    float: left;
-    font-size: 0.75em;
-    display: block;
-}
-contact-form>#agreement>input#tandcField+ label::before {
-    width: 15px;
-    display: inline-block;
-    vertical-align: middle;
-    height: 15px;
-    font-weight: bold;
-    border-radius: 3px;
-    margin-right: 5px;
-    content: "\f068";
-    line-height: 15px;
-    text-align: center;
-    color: #445;
-    transition: all 0.1s;
-    font-family: 'FontAwesome';
-}
-contact-form>#agreement>#tandc {
-    max-height: 0px;
-    margin-left: 15%;
-    margin-top: 10px;
-    background: #fff;
-    box-sizing: border-box;
-    padding: 0px;
-    width: 70%;
-    font-size: 0.8em;
-    display: block;
-    overflow: auto;
-    position: relative;
-    transition: all 0.25s;
-}
-contact-form>#agreement>#tandc.active {
-    max-height: 100px;
-    padding: 10px;
-    overflow: auto;
-    border: 1px solid skyblue;
-}
-contact-form>#agreement>input#tandcField:checked+ label::before {
-    content: "\f00c";
-    color: turquoise;
-    background: none;
-    box-shadow: none;
-}
-contact-form>#agreement>input#tandcField+ label:active::before {
-    transform: scale(0.5);
-}
 contact-form> *:focus {
     border-color: #3c3c5d;
 }
-contact-form> input:focus+ label, contact-form> input.filled+ label {
+contact-form> input:focus+ label,contact-form> textarea:focus+label,contact-form> textarea.filled+label, contact-form> input.filled+ label {
     font-size: 0.75em;
     transform: translateY(-100%);
     color: #1d1d2d;
 }
-#agreement view {
-    position: relative;
-    float: right;
-    margin-top: 8px;
-    width: 20px;
-    line-height: 20px;
-    height: 20px;
-    text-align: center;
-    color: white;
-    background: #999;
-    font-size: 0.8em;
-    margin-right: 15%;
-    display: block;
-    border-radius: 50%;
-    cursor: pointer;
-}
-contact-form> button {
-    border: 1px solid #6e6e7e;
+contact-form> .button {
+    border:none;
+    width:70%;
     margin-top: 30px;
     color: #6e6e7e;
+    text-align:center;
+    line-height:60px;
+    z-index:+150;
 }
-contact-form> button.disabled {
-    border: 1px solid #ccc;
-    color: #ccc;
+contact-form> .button.toggle {
+    margin-top:-80px;
 }
-contact-form> button:not(.disabled):hover {
-    background: rgba(0, 0, 0, 0.1)
+contact-form> .button.final {
+    position:relative;
+    width:50%;
+    opacity:0;
+    transform:scale(0);
+    transition:all 0.25s;
+    pointer-events:none;
+}
+contact-form> .button.toggle::after,contact-form> .button.final::after  {
+    border: 1px solid #6e6e7e;
+    content:"NEXT";
+    display:inline-block;
+    width:100%;
+    position:relative;
+    top:0;
+    left:0;
+}
+contact-form> .button.final::after {
+    content:"I AGREE";
+}
+contact-form> .button.final.active {
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+}
+contact-form> .button.toggle.active {
+    width:auto;
+    padding:0px 20px;
+    position:absolute;
+    bottom:20px;
+    left:20px;
+}
+contact-form> .button.toggle.active::after {
+    content:"Back";
+    border:none;
+}
+contact-form> .button:hover {
+    background: #eeefff;
 }
 wrapper {
     position: relative;
@@ -329,6 +334,32 @@ wrapper slide page-tag {
     padding: 0px;
     display: block;
 }
+#HOME > dots {
+    width:100%;
+    height:5px;
+    position:absolute;
+    display:block;
+    top: 450px;
+    z-index: +10;
+    text-align:center;
+    white-space:nowrap;
+}
+#HOME > dots> div {
+    width:0.35em;
+    height:0.35em;
+    transition:all 0.2s;
+    background:#fff;
+    cursor:pointer;
+    display:inline-block;
+    margin:0px 0.35em;
+    top:60px;
+    left:0px;
+    will-change:transform;
+    border-radius: 50%;
+}
+#HOME > dots> div.active{
+    transform:scale(1.5);
+}
 logo {
     position: absolute;
     line-height: 2em;
@@ -339,7 +370,7 @@ logo {
     letter-spacing: -0.06em;
     text-align: center;
     z-index: +1000;
-    color: rgba(240, 240, 255, 1);
+    color: #445;
 }
 tracker {
     position: fixed;
@@ -349,22 +380,19 @@ tracker {
     font-size: 1em;
     right: 0;
     width: 100%;
-    box-shadow: 20px 50px 50px -20px rgba(0, 0, 0, 0.2) inset;
     z-index: +100;
     transition: all 0.2s;
-    color: white;
-}
-tracker.shade {
-    background: #29aba3;
+    color: #334;
+    background: #F0f0f4;
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
-tracker> tooltip {
-    position: relative;
-    float: right;
-    top: 0;
+.tooltip {
+    position: fixed;
+    /* top: 0; */
+    display:block;
+    white-space:normal;
     box-sizing: border-box;
-    width: 100%;
-    padding: 0px 20%;
+    padding: 0px 20px;
     line-height: 1.5em;
     font-size: 0.8em;
     z-index: +9990;
@@ -372,15 +400,19 @@ tracker> tooltip {
     color: #e0e0e0;
     text-align: center;
     transition: all 0.5s;
-    max-height: 0;
     animation-play-state: paused;
-    animation: alert 1s 0s 2 linear;
+    animation: alert 1s 0s infinite linear;
+    box-shadow:0px 3px 4px 0px rgba(0,0,0,0.1);
+    bottom:80px;
+    left:50%;
+    max-height:0;
+    transform:translateX(-50%);
     overflow: hidden;
 }
-tracker> tooltip.active {
+.tooltip.active {
     animation-play-state: running;
     max-height: 100px;
-    padding: 5px 20%;
+    padding:20px;
 }
 @keyframes alert {
     50% {
@@ -405,7 +437,6 @@ tracker>div> div {
     /*border-left: 1px solid #6d6d7e;*/
     margin: 0px 1px;
     cursor: pointer;
-    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2);
     transition: all 0.2s;
 }
 tracker>div>div>a {
@@ -413,18 +444,21 @@ tracker>div>div>a {
     width: 100%;
     height: 100%;
 }
-tracker>div> div:hover, tracker>div> div.active {
-    color: #eef;
-    box-shadow: 0px -7px 0px -5px #eef inset;
+tracker>div> div:hover{
+    color: #445;    
+    box-shadow: 0px -7px 0px -5px #445 inset;
+}
+tracker>div> div.active {
+    background: #e0e0e4;
 }
 tracker> div> div:first-child {
     border-left: none;
 }
 slideshow {
     width: 100%;
-    height: 400px;
+    height: 500px;
     display: block;
-    top: 0%;
+    top:50px;
     position: relative;
     overflow: hidden;
     left: 0;
@@ -454,11 +488,14 @@ slideshow slideWrapper.active photo {
     z-index: +5;
     transition-delay: 0s;
 }
-slideshow slideWrapper photo img {
+slideshow slideWrapper photo div {
     position: relative;
-    height: auto;
+    height: 100%;
     width: 100%;
     opacity: 1;
+    will-change: opacity;
+    background-size:cover;
+    background-position: 50% 60%;
 }
 about {
     position: relative;
@@ -507,13 +544,13 @@ categories category {
     font-size: 15px;
     display: inline-block;
     position: relative;
-    height: 300px;
+    height: 350px;
     box-sizing: border-box;
     margin-bottom: 50px;
     transition: all 0.5s cubic-bezier(0, 0, 0, 1);
 }
-categories category div {
-    width: 70%;
+categories category>div {
+    width: 80%;
     display: block;
     position: absolute;
     left: 10%;
@@ -524,20 +561,22 @@ categories category div {
     transition: all 0.2s;
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
 }
-categories category div:hover {
+categories category>div:hover {
     box-shadow: 0px 10px 20px -5px rgba(0, 0, 0, 0.2);
 }
-categories category img {
-    height: auto;
+categories category>div>div {
+    height: 100%;
     width: 100%;
-    transform: translateX(-50%);
-    left: 50%;
-    position: relative;
+    will-change:opacity;
+    background-size:cover;
+    background-position:50% 50%;
+    position: absolute;
+    transition:all 0.3s;
     opacity: 0;
     box-sizing: border-box;
     border-radius: 5px 5px 0px 0px;
 }
-categories category img.active {
+categories category>div>div.active {
     opacity: 1;
 }
 categories category span {
@@ -548,7 +587,6 @@ categories category span {
     line-height: 50px;
     position: absolute;
     bottom: 0;
-    border-radius: 0px 0px 5px 5px;
     background: rgba(255, 255, 255, 1);
     text-align: center;
     color: #111119;
@@ -643,35 +681,40 @@ categories category span {
     font-size: 2em;
     transform: translate(20px, 20px);
 }
-#privacyInput+ label {
-    margin: 30px 0px;
+.policy {
+    position:absolute;
+    bottom:20px;
+}
+.policy input[type='checkbox']+ label {
+    margin: 0px 0px;
     display: block;
-    position: absolute;
-    bottom: 0;
+    position: relative;
+    /* bottom: 10; */
     font-size: 0.8em;
     font-weight: 300;
 }
-#privacy_policy {
+#privacy_policy,#termsandconditions {
     color: rgba(255, 255, 255, 0.75);
-    font-size: 0.9em;
-    padding: 0px 40px;
+    font-size: 0.75em;
+    padding: 0px 20px;
     line-height: 1.2em;
+    margin: 5px 0px;
     overflow: auto;
     max-width: calc(70% - 400px);
     width: 50%;
-    position: absolute;
+    /* position: absolute; */
     bottom: 0px;
     z-index: +400;
     font-weight: 300;
     outline: none;
     border-left: 2px solid #aaa;
 }
-#privacyInput:checked+ label+ p {
-    padding: 20px 40px;
+#privacyInput:checked+ label+ p, #termsInput:checked+ label+ p {
+    padding: 20px 20px;
     background: #2e2e3e;
 }
 #UPCOMING {
-    background-image: url('images/occasion_back.jpg');
+    background-image: url('images/occasion.jpg');
     background-size: cover;
     box-shadow: 0px 10px 7px -7px rgba(0, 0, 0, 0.3) inset, 0px -10px 7px -7px rgba(0, 0, 0, 0.3) inset;
     background-position: 50% 0%;
@@ -720,6 +763,7 @@ categories category span {
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    will-change: transform;
     margin-bottom: 20px;
     transform-origin: 50% 50% -100px;
     transform: rotateX(-90deg);
@@ -800,6 +844,16 @@ categories category span {
 
 /*Response to device*/
 
+@media (max-width:1025px) {
+    wrapper slide {
+        padding: 5%;
+        display: block;
+    }
+    wrapper {
+        white-space: normal;
+    }
+}
+
 @media (max-width:900px) {
     #UPCOMING> ul> li {
         width: 50%;
@@ -815,21 +869,11 @@ categories category span {
     body {
         overflow: auto;
     }
-    wrapper slide {
-        padding: 5%;
-        display: block;
-    }
-    wrapper {
-        white-space: normal;
-    }
-    slideshow {
-        height: 300px;
-    }
-    slideshow slideWrapper photo img {
+    slideshow slideWrapper photo div {
         height: 100%;
-        width: auto;
-        transform: translateX(-50%);
-        left: 50%;
+        width: 100%;
+        background-size:cover;
+        background-position:50% 50%;
         top: 0;
     }
     #CONTACT_US {
@@ -842,14 +886,14 @@ categories category span {
     #CONTACT_US> .contacts {
       margin-left: 5%;
     }
-    #privacy_policy {
+    #privacy_policy,#termsandconditions {
         position: relative;
         padding: 0px 5%;
-        margin-top: 20px;
+        /* margin-top: 20px; */
         margin-left: -5%;
         max-width: 100%;
         width: 100%;
-        bottom: 60px;
+        /* bottom: 60px; */
         border: none;
         background: rgba(255, 255, 255, 0.1);
     }
@@ -890,8 +934,19 @@ categories category span {
     #TESTIMONIALS> div.slider> .testimonial> span {
         bottom: 2em;
     }
+    #privacyInput:checked+ label+ p, #termsInput:checked+ label+ p {
+        padding:20px 5%;
+        margin:20px -5%;
+    }
 }
 @media (max-width:700px) {
+    slideshow {
+        top:0;
+    }
+    .policy {
+        position: relative;
+        bottom: unset;
+    }
     wrapper slide h1 {
         width: 100%;
         padding-left: 0px;
@@ -910,9 +965,9 @@ categories category span {
     categories category {
         width: 100%;
     }
-    categories category div {
-        width: 100%;
-        left: 0%;
+    categories category>div {
+        width: 80%;
+        left: 10%;
     }
     about> p {
         max-width: 80%;
@@ -947,9 +1002,14 @@ categories category span {
         width: 100%;
         clear: both;
         height: 2em;
+        color:white;
         font-weight: 500;
         line-height: 2em;
         padding-top: 2em;
+    }
+    tracker>div>div:hover,tracker>div>div.active {
+        background:none;
+        color:white;
     }
     tracker>div>div:hover {
         box-shadow: none;
@@ -972,7 +1032,7 @@ categories category span {
         top: 0;
         color: white;
         line-height: 2em;
-        padding: 0px 20px;
+        padding: 0px 10px;
         cursor: pointer;
         text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     }
@@ -988,6 +1048,12 @@ categories category span {
     }
     #TESTIMONIALS> div.slider > .testimonial>div>div{
       display: block;
+    }
+    slideshow {
+        height:300px;
+    }
+    #HOME > dots {
+        top:270px;
     }
 }
 @media (max-width:400px) {
