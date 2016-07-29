@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
 
 <head>
@@ -14,7 +13,6 @@
 
 <body>
   <tracker>
-    <tooltip>Fill in your details and we'll get back to you soon</tooltip>
     <logo><span class="blue">SMILE</span><span class="pink">MIDDLE</span></logo>
     <face></face>
     <div>
@@ -104,12 +102,6 @@
         </category>
       </categories>
     </slide>
-    <?php
-    include 'php/connection.php';
-    $sql = "SELECT * FROM `upcoming`;";
-    $result = $conn->query($sql);
-    if ($result) :
-      ?>
     <slide id="UPCOMING" class='hidden'>
       <br/>
       <h1>OCCASIONS</h1><br/>
@@ -117,11 +109,6 @@
         <li><span>Raksha Bandhan</span><span>06-08-2016</span></li>
         <li><span>Friendship Day</span><span>07-08-2016</span></li>
         <li><span>Janmashtmi</span><span>26-08-2016</span></li>
-        <?php
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-          echo '<li><span>'.$row['label'].'</span><span>'.$row['date'].'</span></li>';
-        }
-        ?>
       </ul>
       <br/>
       <h1>UPCOMING</h1><br/>
@@ -131,7 +118,6 @@
         <li><span>Janmashtmi</span><span>26-08-2016</span></li>
       </ul>
     </slide>
-  <?php endif; ?>
   <slide id='TESTIMONIALS' class='hidden'>
     <div class="slider">
       <div class="testimonial active">
@@ -223,7 +209,7 @@
     </div>
   </slide>
 </wrapper>
-
+<div class='tooltip'>Fill in your details and we'll get back to you soon</div>
 </body>
 <script src="index.js"></script>
 
