@@ -25,6 +25,7 @@
   </tracker>
   <wrapper>
     <slide id='HOME' class='hidden'>
+      <slideshowwrapper>
       <dots>
         <div class="active"></div>
         <div></div>
@@ -47,6 +48,7 @@
           </photo>
         </slideWrapper>
       </slideshow>
+      </slideshowwrapper>
       <about>
         <p>
           Gifts are not about the monetary value attached to them, they are about the emotions that go with them. <i>Unique &amp; customised gifts</i> make the receiver feel loved even though the sender is miles away. We, at <strong>SmileMiddle</strong>, are a team on a mission to spread the infectious smile.
@@ -95,6 +97,14 @@
         <category style='transition-delay:0.8s'>
           <div>
             <span>WATERCOLOR</span>
+            <div style="background-image:url('images/sample1.jpg')" class='active'></div>
+            <div style="background-image:url('images/sample2.jpg')"></div>
+            <div style="background-image:url('images/sample3.jpg')"></div>
+          </div>
+        </category>
+        <category style='transition-delay:0.8s'>
+          <div>
+            <span>OIL PAINTING</span>
             <div style="background-image:url('images/sample1.jpg')" class='active'></div>
             <div style="background-image:url('images/sample2.jpg')"></div>
             <div style="background-image:url('images/sample3.jpg')"></div>
@@ -158,6 +168,25 @@
       </div>
     </div>
   </slide>
+  <slide id="OPPORTUNITIES">
+    <h3>Opportunities with us</h3>
+    <ul>
+      <li class="title">Interns</li>
+      <li>Hey yo </li>
+      <li>Bitch magnets</li>
+      <li>Maa chudao</li>
+      <li>Samjhe bhosadi ke</li>
+    </ul>
+    <ul>
+      <li class="title">Artists</li>
+      <li>Maa chudao</li>
+      <li>Maa chudao</li>
+      <li>Maa chudao</li>
+      <li>Maa chudao</li>
+      <li>Maa chudao</li>
+    </ul>
+    <span>Send your portfolio at <i>smilemiddle.services@gmail.com</i></span>
+  </slide>
   <slide id='CONTACT_US' class='hidden'>
     <div class='vision'>
       At Smile Middle, we understand the importance of art and strive to get artists the respect they deserve. We want to give a meaning to the wonderful hobby of thousands by connecting the best talents around with customers like you and bring all smiles around.
@@ -166,17 +195,10 @@
       <li style='display:block;'><span><a>&#xf0e0;</a></span><span>smilemiddle.services@gmail.com</span></li>
       <li style='display:block;margin-bottom:10px;'><span><a>&#xf095;</a></span><span>+91-9785455421</span></li>
       <li class='social'><span class='fb'><a href='#' target='_blank'>&#xf09a;</a></span></li>
-      <li class='social'><span class='tw'><a href='#' target='_blank'>&#xf099;</a></span></li>
       <li class='social'><span class='ig'><a href='#' target='_blank'>&#xf16d;</a></span></li>
     </div>
     <contact-form class='compact'>
       <face></face>
-      <div id='tandc'>
-        <div>
-        <h3><center>T&amp;C</center></h3>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-      </div>
       <input id="nameField" type="text" />
       <label for="nameField">Name</label>
       <input id="emailField" type="email" />
@@ -185,31 +207,39 @@
       <label for="cityField">City/Location</label>
       <input id="numberField" type="tel" />
       <label for="numberField">Phone Number</label>
-      <textarea id="messageField"></textarea>
-      <label for="messageField">Message</label>
-      <div class="button final"></div>
-      <div class="button toggle" title='Read the Terms &amp; Conditions'></div>
+      <select id="categoryField">
+        <option selected="selected" disabled>&nbsp;</option>
+        <option>Color Pencil</option>
+        <option>Pencil Sketch</option>
+        <option>Pen Shade</option>
+        <option>Acrylic Stroke</option>
+        <option>Watercolor</option>
+        <option>Oil Painting</option>
+      </select>
+      <label for="categoryField">Category</label>
+      <input id="couponField" type="text" />
+      <label for="couponField">Coupon Code (if any)</label>
+      <div class="button"></div>
     </contact-form>
     <div class='policy'>
-      <input type='checkbox' id="termsInput">
-      <label for="termsInput"><u>Terms and conditions.</u></label>
-      <p id="termsandconditions" tabindex="400">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <input type='checkbox' id="privacyInput"/>
-      <label for="privacyInput"><u>Read our privacy policy.</u></label>
-      <p id="privacy_policy" tabindex="400">
-        We don't have a privacy policy :P <br>
-        Take that madafaka
-      </p>
-      <label style="font-size:0.8em;">&copy; SmileMiddle 2016</label>
-    </div>
-    <div class="opp">
-      <ul></ul>
+      <span for="privacypolicy"><u>Terms and conditions.</u></span>
+      <span for="termsandconditions"><u>Read our privacy policy.</u></span>
+      <span for="faq"><u>FAQ</u></span>
+      <copy style="font-size:0.8em;">&copy; SmileMiddle 2016</copy>
     </div>
   </slide>
 </wrapper>
-<div class='tooltip'>Fill in your details and we'll get back to you soon</div>
+<div class='overlay'>
+  <p id="privacypolicy">
+        We don't have a privacy policy :P <br>
+        Take that madafaka
+  </p>
+  <p id="termsandconditions">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+  <p id="faq">
+  </p>
+</div>
 </body>
 <script src="index.js"></script>
 
