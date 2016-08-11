@@ -20,6 +20,7 @@
       <div><a href="#PRODUCTS">PRODUCTS</a></div>
       <div><a href="#UPCOMING">UPCOMING</a></div>
       <div><a href="#TESTIMONIALS">TESTIMONIALS</a></div>
+      <div><a href="#OPPORTUNITIES">WORK</a></div>
       <div><a href="#CONTACT_US">CONTACT US</a></div>
     </div>
   </tracker>
