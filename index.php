@@ -184,18 +184,18 @@
     <h3>Opportunities with us</h3>
     <ul>
       <li class="title">Interns</li>
-      <li>Hey yo </li>
-      <li>Bitch magnets</li>
-      <li>Maa chudao</li>
-      <li>Samjhe bhosadi ke</li>
+      <li>Sharingan</li>
+      <li>Light Yagami</li>
+      <li>Kira</li>
+      <li>Sasuke</li>
     </ul>
     <ul>
       <li class="title">Artists</li>
-      <li>Maa chudao</li>
-      <li>Maa chudao</li>
-      <li>Maa chudao</li>
-      <li>Maa chudao</li>
-      <li>Maa chudao</li>
+      <li>Naruto</li>
+      <li>Boruto</li>
+      <li>Shinchan</li>
+      <li>Sakura</li>
+      <li>Kakashi</li>
     </ul>
     <span>Send your portfolio at <i>smilemiddle.services@gmail.com</i></span>
   </slide>
